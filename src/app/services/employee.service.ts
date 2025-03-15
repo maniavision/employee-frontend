@@ -46,7 +46,37 @@ export class EmployeeService {
       })
     );
   }
-  // create(payload: Employee): Observable<Employee> {
-  //   return this.http.post<Employee>(``);
-  // }
+
+  create(payload: Employee): Observable<Employee> {
+    return this.http.post<Employee>(`${this.URL}`, payload)
+    .pipe(
+      tap((newEmployee: Employee) => {
+        this.employees = [...this.employees, newEmployee];
+      })
+    );
+  }
+
+  update(payload: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this.URL}/${payload.id}`, payload)
+    .pipe(
+      tap((updatedEmployee: Employee) => {
+        this.employees.map((employee: Employee) => {
+          if(employee.id === updatedEmployee.id) {
+            return updatedEmployee;
+          } else {
+            return employee;
+          }
+        });
+      })
+    );
+  }
+
+  delete(payload: Employee): Observable<Employee> {
+    return this.http.delete<Employee>(`${this.URL}/${payload.id}`)
+    .pipe(
+      tap(() => {
+        this.employees = this.employees.filter((employee: Employee) => employee.id == payload.id);
+      })
+    );
+  }
 }

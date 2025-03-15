@@ -1,1 +1,9 @@
-<p>employee-list works!</p>
+<div>
+  <ng-container *ngIf="employees.length; else noEmployees">
+    <app-employee-card *ngFor="let employee of employees"
+      [employee]="employee"></app-employee-card>
+  </ng-container>
+  <ng-template #noEmployees>
+    <p>No employees :(</p>
+  </ng-template>
+</div>

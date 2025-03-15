@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Employee } from 'src/app/entities/employee';
 
 @Component({
   selector: 'app-employee-card',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class EmployeeCardComponent {
 
+  @Input() employee!: Employee;
 }
