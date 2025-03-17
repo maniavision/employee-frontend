@@ -1,0 +1,134 @@
+/* .employee-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  font-family: sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.employee-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.employee-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.employee-card .label {
+  font-weight: bold;
+  display: inline-block;
+  width: 120px;
+}
+
+
+.employee-card .edit-button,
+.employee-card .delete-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.employee-card .edit-button {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 5px;
+}
+
+.employee-card .edit-button:hover {
+    background-color: #3e8e41;
+}
+
+.employee-card .delete-button {
+    background-color: #f44336;
+    color: white;
+    margin-left: 5px;
+}
+
+.employee-card .delete-button:hover {
+    background-color: #d32f2f;
+} */
+.employee-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  width: 320px;
+  margin: 20px;
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  min-height: 190px;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.employee-card h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.employee-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis if needed */
+}
+
+.employee-card .label {
+  font-weight: 600;
+  color: #333;
+  display: inline-block;
+  width: 120px;
+  margin-left: auto; /* Push label to the right */
+  width: auto; /* Allow label to adjust to its content */
+  margin-right: 10px; /* Add some space between the label and value */
+}
+
+.employee-card .button-container {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.employee-card .edit-button,
+.employee-card .delete-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+}
+
+.employee-card .edit-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.employee-card .edit-button:hover {
+  background-color: #2980b9;
+}
+
+.employee-card .delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.employee-card .delete-button:hover {
+  background-color: #c0392b;
+}

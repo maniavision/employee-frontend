@@ -1,0 +1,14 @@
+
+<div class="employee-card">
+    <h2>{{employee.firstName + ", " + employee.lastName}}</h2>
+    <p><span class="label">Date of Birth:</span> {{employee.dateOfBirth}}</p>
+    <p><span class="label">Hired Date:</span> {{employee.hiredDate}}</p>
+    <p><span class="label">Termination Date:</span> {{employee.terminationDate}}</p>
+    <div class="button-container">
+      <a class="edit-button" [routerLink]="employee.id?.toString()" >Edit</a>
+      <button class="delete-button" (click)="onDeleteHandler()">Delete</button>
+    </div>
+</div>
+
+
+

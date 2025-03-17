@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../entities/employee';
-import { map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  private URL: string = '`http://localhost:8080`';
+  private URL: string = '';//'`http://localhost:8080/api/employees`';
   private employees: Employee[] = [];
 
   constructor(private http: HttpClient) { }
@@ -18,11 +18,12 @@ export class EmployeeService {
       return of(this.employees);
     }
 
-    return this.http.get<Employee[]>(`${this.URL}`)
+    return this.http.get<Employee[]>(`http://localhost:8080/api/employees`)
     .pipe(
       tap((employees: Employee[]) => {
         this.employees = employees;
-      })
+      }),
+      catchError(this.handlerError)
     );
   }
 
@@ -43,21 +44,23 @@ export class EmployeeService {
           return reqEmployee;
         }
         return initEmployee;
-      })
+      }),
+      catchError(this.handlerError)
     );
   }
 
   create(payload: Employee): Observable<Employee> {
-    return this.http.post<Employee>(`${this.URL}`, payload)
+    return this.http.post<Employee>(`http://localhost:8080/api/employees`, payload)
     .pipe(
       tap((newEmployee: Employee) => {
         this.employees = [...this.employees, newEmployee];
-      })
+      }),
+      catchError(this.handlerError)
     );
   }
 
   update(payload: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.URL}/${payload.id}`, payload)
+    return this.http.put<Employee>(`http://localhost:8080/api/employees/${payload.id}`, payload)
     .pipe(
       tap((updatedEmployee: Employee) => {
         this.employees.map((employee: Employee) => {
@@ -72,11 +75,22 @@ export class EmployeeService {
   }
 
   delete(payload: Employee): Observable<Employee> {
-    return this.http.delete<Employee>(`${this.URL}/${payload.id}`)
+    console.log(payload);
+    return this.http.delete<Employee>(`http://localhost:8080/api/employees/${payload.id}`)
     .pipe(
       tap(() => {
         this.employees = this.employees.filter((employee: Employee) => employee.id == payload.id);
-      })
+      }),
+      catchError(this.handlerError)
     );
+  }
+
+  handlerError(err: HttpErrorResponse) {
+    if(err.error instanceof ErrorEvent) {
+      console.warn('Client', err.message);
+    } else {
+      console.warn('Server', err.status);
+    }
+    return throwError(() => new Error(err.message));
   }
 }

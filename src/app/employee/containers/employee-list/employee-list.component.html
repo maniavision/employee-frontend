@@ -1,9 +1,11 @@
-<div>
+<div class="card-container">
   <ng-container *ngIf="employees.length; else noEmployees">
     <app-employee-card *ngFor="let employee of employees"
-      [employee]="employee"></app-employee-card>
+      [employee]="employee"
+      (delete)="onDeleteEventHandler($event)"/>
   </ng-container>
   <ng-template #noEmployees>
-    <p>No employees :(</p>
+    No employees...
   </ng-template>
 </div>
+

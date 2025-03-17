@@ -1,1 +1,14 @@
-<app-employee></app-employee>
+<div>
+  <nav>
+    <a href="#home">Home</a>
+    <a routerLink="employee/employees/new">Add Employee</a>
+    <div class="nav-right">
+        <input type="text" placeholder="Search..">
+        <button type="submit">Search</button>
+    </div>
+</nav>
+</div>
+<router-outlet></router-outlet>
+<!-- <app-employee-list></app-employee-list>
+
+<app-employee-single></app-employee-single> -->

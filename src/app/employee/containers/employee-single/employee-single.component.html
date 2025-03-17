@@ -1,0 +1,7 @@
+<div class="body">
+  <app-employee-form
+    [employee]="employee"
+    [isEdit]="isEdit"
+    (create)="onCreateEventHandler($event)"
+    (update)="onUpdateEventHandler($event)"></app-employee-form>
+</div>

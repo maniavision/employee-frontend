@@ -1,0 +1,53 @@
+
+    <div class="employee-form">
+      <h2>Employee Information</h2>
+      <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+        <label for="firstName">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          [ngModel]="employee.firstName"
+          ngModel
+          required>
+
+        <label for="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          [ngModel]="employee.lastName"
+          ngModel
+          required>
+
+        <label for="hiredDate">Date Of Birth:</label>
+        <input
+          type="date"
+          id="dateOfBirth"
+          name="dateOfBirth"
+          [ngModel]="employee.dateOfBirth"
+          ngModel
+          required>
+
+        <label for="hiredDate">Hired Date:</label>
+        <input
+          type="date"
+          id="hiredDate"
+          name="hiredDate"
+          [ngModel]="employee.hiredDate"
+          ngModel
+          required>
+
+        <label for="terminationDate">Termination Date (Optional):</label>
+        <input
+          type="date"
+          id="terminationDate"
+          name="terminationDate"
+          [ngModel]="employee.terminationDate"
+          ngModel>
+
+        <button type="submit">{{isEdit ? 'Upate': 'Create'}}</button>
+      </form>
+    </div>
+
+
